@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Site</title>
+    <meta
+      name="description"
+      content="A starter site built with plain HTML, CSS, and JavaScript."
+    />
+
+    <!-- Set the saved theme before the page paints, so there's no flash -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+        var a = localStorage.getItem("accent");
+        if (a) document.documentElement.setAttribute("data-accent", a);
+      } catch (e) {}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top">My Site</a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="#playground">Playground</a>
+        <a href="#plan">Plan</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" type="button">
+          Dark mode
+        </button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <figure class="dog">
+          <div class="dog-frame">
+            <img id="dog-img" alt="" width="1200" height="600" hidden />
+            <p class="dog-fallback" id="dog-fallback">Fetching a dog…</p>
+          </div>
+          <figcaption class="dog-bar">
+            <span id="dog-caption" role="status">Loading</span>
+            <button class="button" id="dog-btn" type="button" disabled>
+              New dog
+            </button>
+          </figcaption>
+        </figure>
+
+        <h1>This page is live,<br />and it's yours to change.</h1>
+        <p class="lede">
+          A starter built with plain HTML, CSS, and JavaScript. Edit a file,
+          push to GitHub, and the change goes online.
+        </p>
+        <a class="button" href="#playground">Try the playground</a>
+      </section>
+
+      <section class="section facts" id="facts" aria-labelledby="facts-title">
+        <div class="fact-heading">
+          <div>
+            <p class="fact-kicker">A small diversion</p>
+            <h2 id="facts-title">Today's useless fact</h2>
+          </div>
+          <button class="button" id="fact-btn" type="button">
+            Random fact
+          </button>
+        </div>
+        <p class="fact-text" id="fact-text" role="status" aria-live="polite">
+          Fetching today's fact...
+        </p>
+        <p class="fact-source" id="fact-source" hidden></p>
+      </section>
+
+      <section
+        class="section"
+        id="playground"
+        aria-labelledby="playground-title"
+      >
+        <h2 id="playground-title">Playground</h2>
+        <p>
+          Pick an accent color. JavaScript changes one CSS variable, and the
+          whole page follows. Your choice is remembered for next time.
+        </p>
+
+        <div class="swatches" role="group" aria-label="Accent color">
+          <button
+            class="swatch"
+            data-accent="blue"
+            aria-label="Blue"
+            aria-pressed="true"
+          ></button>
+          <button
+            class="swatch"
+            data-accent="coral"
+            aria-label="Coral"
+            aria-pressed="false"
+          ></button>
+          <button
+            class="swatch"
+            data-accent="green"
+            aria-label="Green"
+            aria-pressed="false"
+          ></button>
+          <button
+            class="swatch"
+            data-accent="violet"
+            aria-label="Violet"
+            aria-pressed="false"
+          ></button>
+        </div>
+
+        <div class="counter">
+          <button class="button" id="count-btn" type="button">Click me</button>
+          <p>Clicked <strong id="count-out">0</strong> times</p>
+        </div>
+      </section>
+
+      <section class="section" id="plan" aria-labelledby="plan-title">
+        <h2 id="plan-title">Plan</h2>
+        <ul class="rows">
+          <li>
+            <h3>Pages</h3>
+            <p>
+              Add more <code>.html</code> files next to <code>index.html</code>.
+              Link to them like <code>&lt;a href="about.html"&gt;</code>.
+            </p>
+          </li>
+          <li>
+            <h3>Games</h3>
+            <p>
+              Phaser games can live in their own folder, such as
+              <code>games/runner/</code>, and be linked from here.
+            </p>
+          </li>
+          <li>
+            <h3>Images</h3>
+            <p>
+              Compress photos in Squoosh, then save them in
+              <code>images/</code>.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>
+          Placeholder form. Later, point <code>action</code> at your Formspree
+          or Web3Forms endpoint.
+        </p>
+
+        <form class="form" id="contact-form" action="#" method="post">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+          />
+
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+
+          <button class="button" type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year">2026</span> My Site</p>
+      <p>
+        Dog photos from the <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
