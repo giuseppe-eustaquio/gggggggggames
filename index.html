@@ -56,14 +56,19 @@
       <section class="hero" id="top">
         <figure class="dog">
           <div class="dog-frame">
-            <img id="dog-img" alt="" width="1200" height="600" hidden />
-            <p class="dog-fallback" id="dog-fallback">Fetching a dog…</p>
+            <img id="dog-img" alt="Phee" width="1200" height="600" hidden />
+            <p class="dog-fallback" id="dog-fallback">Loading a Phee photo…</p>
           </div>
           <figcaption class="dog-bar">
-            <span id="dog-caption" role="status">Loading</span>
-            <button class="button" id="dog-btn" type="button" disabled>
-              New dog
-            </button>
+            <span id="dog-caption" role="status">Phee</span>
+            <div class="dog-actions">
+              <button class="button" id="dog-api-btn" type="button">
+                Random dog
+              </button>
+              <button class="button" id="phee-btn" type="button">
+                Random Phee
+              </button>
+            </div>
           </figcaption>
         </figure>
 

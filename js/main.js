@@ -53,7 +53,16 @@ const DOG_API = "https://dog.ceo/api/breeds/image/random";
 const dogImg = document.getElementById("dog-img");
 const dogFallback = document.getElementById("dog-fallback");
 const dogCaption = document.getElementById("dog-caption");
-const dogBtn = document.getElementById("dog-btn");
+const dogApiBtn = document.getElementById("dog-api-btn");
+const pheeBtn = document.getElementById("phee-btn");
+const PHEE_IMAGES = [
+  "images/phee.jpg",
+  "images/phee2.jpg",
+  "images/phee3.jpg",
+  "images/phee4.jpg",
+  "images/phee5.jpg",
+  "images/phee6.jpg",
+];
 
 // "hound-afghan" -> "Afghan hound", "pug" -> "Pug"
 function breedFromUrl(url) {
@@ -64,7 +73,7 @@ function breedFromUrl(url) {
 }
 
 async function loadDog() {
-  dogBtn.disabled = true;
+  dogApiBtn.disabled = true;
   dogCaption.textContent = "Fetching a dog…";
 
   try {
@@ -96,12 +105,44 @@ async function loadDog() {
     }
     dogCaption.textContent = "Couldn't fetch a dog. Try again.";
   } finally {
-    dogBtn.disabled = false;
+    dogApiBtn.disabled = false;
   }
 }
 
-dogBtn.addEventListener("click", loadDog);
-loadDog(); // a new dog on every page load
+async function loadPhee() {
+  pheeBtn.disabled = true;
+  const availableImages = PHEE_IMAGES.filter(
+    (image) => image !== dogImg.getAttribute("src"),
+  );
+  const image =
+    availableImages[Math.floor(Math.random() * availableImages.length)];
+
+  try {
+    await new Promise((resolve, reject) => {
+      const loader = new Image();
+      loader.onload = resolve;
+      loader.onerror = reject;
+      loader.src = image;
+    });
+
+    dogImg.src = image;
+    dogImg.alt = "Phee";
+    dogImg.hidden = false;
+    dogFallback.hidden = true;
+    dogCaption.textContent = "Phee";
+  } catch (err) {
+    console.error("Phee photo failed to load:", err);
+    if (dogImg.hidden) {
+      dogFallback.textContent = "Couldn't load a Phee photo.";
+    }
+  } finally {
+    pheeBtn.disabled = false;
+  }
+}
+
+dogApiBtn.addEventListener("click", loadDog);
+pheeBtn.addEventListener("click", loadPhee);
+loadPhee();
 
 // ---------- Useless fact (Useless Facts API) ----------
 const FACT_API = "https://uselessfacts.jsph.pl/api/v2/facts";
