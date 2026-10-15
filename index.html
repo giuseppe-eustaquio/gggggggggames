@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Site</title>
+    <title>Pheee Playground</title>
     <meta
       name="description"
       content="A starter site built with plain HTML, CSS, and JavaScript."
@@ -31,7 +31,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-      <a class="brand" href="#top">My Site</a>
+      <a class="brand" href="#top">Pheee Playground</a>
 
       <button
         class="nav-toggle"
@@ -49,6 +49,35 @@
         <button class="theme-toggle" id="theme-toggle" type="button">
           Dark mode
         </button>
+        <div class="accent-picker">
+          <p class="accent-label" id="accent-label">Accent color</p>
+          <div class="swatches" role="group" aria-labelledby="accent-label">
+            <button
+              class="swatch"
+              data-accent="blue"
+              aria-label="Blue"
+              aria-pressed="true"
+            ></button>
+            <button
+              class="swatch"
+              data-accent="coral"
+              aria-label="Coral"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="swatch"
+              data-accent="green"
+              aria-label="Green"
+              aria-pressed="false"
+            ></button>
+            <button
+              class="swatch"
+              data-accent="violet"
+              aria-label="Violet"
+              aria-pressed="false"
+            ></button>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -70,6 +99,10 @@
               </button>
             </div>
           </figcaption>
+          <p class="dog-source">
+            Dog photos from the
+            <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.
+          </p>
         </figure>
 
         <h1>This page is live,<br />and it's yours to change.</h1>
@@ -172,37 +205,7 @@
     </main>
 
     <footer class="site-footer">
-      <p class="accent-label" id="accent-label">Accent color</p>
-      <div class="swatches" role="group" aria-labelledby="accent-label">
-        <button
-          class="swatch"
-          data-accent="blue"
-          aria-label="Blue"
-          aria-pressed="true"
-        ></button>
-        <button
-          class="swatch"
-          data-accent="coral"
-          aria-label="Coral"
-          aria-pressed="false"
-        ></button>
-        <button
-          class="swatch"
-          data-accent="green"
-          aria-label="Green"
-          aria-pressed="false"
-        ></button>
-        <button
-          class="swatch"
-          data-accent="violet"
-          aria-label="Violet"
-          aria-pressed="false"
-        ></button>
-      </div>
-      <p>&copy; <span id="year">2026</span> My Site</p>
-      <p>
-        Dog photos from the <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.
-      </p>
+      <p>&copy; <span id="year">2026</span> Pheee Playground</p>
     </footer>
 
     <script type="module" src="js/main.js"></script>

@@ -185,6 +185,12 @@ code {
   border-color: var(--accent);
 }
 
+.accent-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 /* ---------- Layout ---------- */
 main,
 .site-footer {
@@ -305,6 +311,14 @@ main,
   margin-top: 0.8rem;
   color: var(--muted);
 }
+.dog-source {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.dog-source a {
+  color: inherit;
+}
 .dog-actions {
   display: flex;
   flex-wrap: wrap;
@@ -346,15 +360,16 @@ main,
   transform: translateY(0);
 }
 
-/* ---------- Accent color picker (footer) ---------- */
+/* ---------- Accent color picker ---------- */
 .accent-label {
   font-weight: 600;
+  margin: 0;
 }
 
 .swatches {
   display: flex;
   gap: 0.75rem;
-  margin: 0.6rem 0 1.4rem;
+  margin: 0;
 }
 
 .swatch {
@@ -364,6 +379,11 @@ main,
   border: 3px solid var(--bg);
   box-shadow: 0 0 0 2px var(--line);
   cursor: pointer;
+}
+.accent-picker .swatch {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-width: 2px;
 }
 .swatch[aria-pressed="true"] {
   box-shadow: 0 0 0 3px var(--ink);
@@ -516,6 +536,11 @@ main,
   }
   .site-nav.open {
     display: flex;
+  }
+  .accent-picker {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 }
 
