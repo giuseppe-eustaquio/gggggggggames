@@ -51,3 +51,10 @@ Simple games can use plain DOM and CSS (like Matching Pairs). A game that
 needs Phaser can load it from its own `mount()` without affecting the rest.
 
 Each game has its own link: `#playground/<id>`.
+
+The home page hosts the Dog CEO/Phee photo picker and the daily/random
+useless-fact service. The fixed Cornify button loads Cornify on demand when
+clicked. Turbo Tetris is a plain JavaScript and CSS game; it draws its 10×20
+board and standard tetrominoes directly. Its falling piece continues over the
+visible page to the document bottom, so it does not need an external game
+library or image assets.

@@ -15,4 +15,11 @@ export const games = [
       "Flip two cards at a time and match the pairs. Twelve photos of Phee, and a good memory required.",
     load: () => import("./matching-pairs/game.js"),
   },
+  {
+    id: "turbo-tetris",
+    title: "Turbo Tetris",
+    blurb:
+      "A 10×20 board with standard tetrominoes that fall all the way through the page.",
+    load: () => import("./turbo-tetris/game.js"),
+  },
 ];

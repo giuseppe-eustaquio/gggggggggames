@@ -1,0 +1,108 @@
+.tt-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.tt-play-area {
+  position: relative;
+  width: min(100%, 17.5rem);
+}
+
+.tt-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.tt-board:focus-visible {
+  outline-offset: 5px;
+}
+
+.tt-status {
+  width: 100%;
+  min-height: 1.65em;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+  text-align: center;
+}
+
+.tt-next {
+  min-width: 8rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+}
+
+.tt-next h4 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+}
+
+.tt-next p {
+  margin: 0.5rem 0 0;
+}
+
+.tt-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1rem);
+  grid-template-rows: repeat(4, 1rem);
+  justify-content: center;
+  gap: 2px;
+}
+
+.tt-preview span {
+  border-radius: 3px;
+  background: var(--bg);
+}
+
+.tt-preview .is-filled {
+  background: var(--accent);
+}
+
+.tt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tt-controls .button {
+  padding: 0.55rem 0.85rem;
+}
+
+.tt-controls .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.tt-instructions {
+  margin: 0.75rem auto 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.tt-fall-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+@media (max-width: 24rem) {
+  .tt-controls .button {
+    padding: 0.5rem 0.65rem;
+  }
+
+}

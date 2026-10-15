@@ -29,6 +29,10 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <button class="cornify-button" id="cornify-btn" type="button">
+      Cornify this page <span aria-hidden="true">✨</span>
+    </button>
+    <p class="cornify-status" id="cornify-status" role="status" aria-live="polite"></p>
 
     <header class="site-header">
       <a class="brand" href="#top">Pheee Playground</a>
@@ -44,8 +48,6 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <a href="#playground">Playground</a>
-        <a href="#plan">Plan</a>
-        <a href="#contact">Contact</a>
         <button class="theme-toggle" id="theme-toggle" type="button">
           Dark mode
         </button>
@@ -100,17 +102,10 @@
             </div>
           </figcaption>
           <p class="dog-source">
-            Dog photos from the
+            Random dog photos from the
             <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.
           </p>
         </figure>
-
-        <h1>This page is live,<br />and it's yours to change.</h1>
-        <p class="lede">
-          A starter built with plain HTML, CSS, and JavaScript. Edit a file,
-          push to GitHub, and the change goes online.
-        </p>
-        <a class="button" href="#playground">Try the playground</a>
       </section>
 
       <section class="section facts" id="facts" aria-labelledby="facts-title">
@@ -140,68 +135,6 @@
         </div>
       </section>
 
-      <section class="section" id="plan" aria-labelledby="plan-title">
-        <h2 id="plan-title">Plan</h2>
-        <ul class="rows">
-          <li>
-            <h3>Pages</h3>
-            <p>
-              Add more <code>.html</code> files next to <code>index.html</code>.
-              Link to them like <code>&lt;a href="about.html"&gt;</code>.
-            </p>
-          </li>
-          <li>
-            <h3>Games</h3>
-            <p>
-              Each game lives in its own folder, such as
-              <code>games/matching-pairs/</code>, and is listed in
-              <code>games/registry.js</code> so it shows up in the
-              Playground.
-            </p>
-          </li>
-          <li>
-            <h3>Images</h3>
-            <p>
-              Compress photos in Squoosh, then save them in
-              <code>images/</code>.
-            </p>
-          </li>
-        </ul>
-      </section>
-
-      <section class="section" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">Contact</h2>
-        <p>
-          Placeholder form. Later, point <code>action</code> at your Formspree
-          or Web3Forms endpoint.
-        </p>
-
-        <form class="form" id="contact-form" action="#" method="post">
-          <label for="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autocomplete="name"
-            required
-          />
-
-          <label for="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-          />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-
-          <button class="button" type="submit">Send message</button>
-          <p class="form-status" id="form-status" role="status"></p>
-        </form>
-      </section>
     </main>
 
     <footer class="site-footer">

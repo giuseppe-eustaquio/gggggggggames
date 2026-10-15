@@ -186,6 +186,54 @@ async function loadFact(random = false) {
 factBtn.addEventListener("click", () => loadFact(true));
 loadFact(); // today's fact on every page load
 
+// ---------- Cornify ----------
+const cornifyBtn = document.getElementById("cornify-btn");
+const cornifyStatus = document.getElementById("cornify-status");
+let cornifyLoad;
+
+function loadCornify() {
+  if (typeof window.cornify_add === "function") return Promise.resolve();
+  if (cornifyLoad) return cornifyLoad;
+
+  cornifyLoad = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://www.cornify.com/js/cornify.js";
+    script.async = true;
+    script.addEventListener(
+      "load",
+      () => {
+        if (typeof window.cornify_add === "function") resolve();
+        else reject(new Error("Cornify loaded without its add function"));
+      },
+      { once: true },
+    );
+    script.addEventListener(
+      "error",
+      () => reject(new Error("Cornify script failed to load")),
+      { once: true },
+    );
+    document.head.append(script);
+  });
+  return cornifyLoad;
+}
+
+cornifyBtn.addEventListener("click", async () => {
+  cornifyBtn.disabled = true;
+  cornifyStatus.textContent = "Adding some sparkle...";
+  try {
+    await loadCornify();
+    window.cornify_add();
+    cornifyStatus.textContent = "Cornified!";
+  } catch (err) {
+    console.error("Cornify failed:", err);
+    cornifyStatus.textContent =
+      "Couldn't load Cornify. Check your connection and try again.";
+    cornifyLoad = null;
+  } finally {
+    cornifyBtn.disabled = false;
+  }
+});
+
 // ---------- Mobile menu ----------
 const navToggle = document.getElementById("nav-toggle");
 const nav = document.getElementById("site-nav");
@@ -199,13 +247,6 @@ nav.addEventListener("click", (e) => {
     nav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
   }
-});
-
-// ---------- Contact form (placeholder) ----------
-document.getElementById("contact-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  document.getElementById("form-status").textContent =
-    "Form works. It isn't connected to an email service yet.";
 });
 
 // ---------- Footer year ----------
