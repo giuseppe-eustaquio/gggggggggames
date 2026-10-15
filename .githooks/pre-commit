@@ -1,0 +1,18 @@
+#!/bin/sh
+# Regenerate the Phee manifest + thumbnails and include them in the commit.
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if command -v python3 >/dev/null 2>&1; then
+  PY=python3
+elif command -v python >/dev/null 2>&1; then
+  PY=python
+else
+  echo "pre-commit: Python not found, can't update the Phee manifest." >&2
+  exit 1
+fi
+
+PYTHONDONTWRITEBYTECODE=1 $PY generate_phee_manifest.py >/dev/null || exit 1
+git add images/phee/manifest.json
+[ -d images/phee/thumbs ] && git add -A -- images/phee/thumbs
+exit 0

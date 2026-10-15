@@ -346,11 +346,15 @@ main,
   transform: translateY(0);
 }
 
-/* ---------- Playground ---------- */
+/* ---------- Accent color picker (footer) ---------- */
+.accent-label {
+  font-weight: 600;
+}
+
 .swatches {
   display: flex;
   gap: 0.75rem;
-  margin: 1.2rem 0 1.8rem;
+  margin: 0.6rem 0 1.4rem;
 }
 
 .swatch {
@@ -377,14 +381,62 @@ main,
   background: #7a4fe0;
 }
 
-.counter {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
+/* ---------- Playground (game list + game view) ---------- */
+.game-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
 }
-.counter p {
+.game-card {
+  display: block;
+  height: 100%;
+  padding: 1.2rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.game-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.game-card h3 {
+  margin-bottom: 0.4em;
+}
+.game-card p {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+}
+.game-card-cta {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.game-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.game-head h3 {
   margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.game-head h3:focus {
+  outline: none;
+}
+.back-link {
+  font-weight: 600;
+}
+.game-loading {
+  color: var(--muted);
 }
 
 /* ---------- Plan list ---------- */
@@ -471,7 +523,8 @@ main,
   html {
     scroll-behavior: auto;
   }
-  .button {
+  .button,
+  .game-card {
     transition: none;
   }
 }

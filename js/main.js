@@ -1,3 +1,5 @@
+import { getPheeImages } from "./phee.js";
+
 // Small helpers so a blocked/disabled localStorage never breaks the page
 function save(key, value) {
   try {
@@ -55,15 +57,6 @@ const dogFallback = document.getElementById("dog-fallback");
 const dogCaption = document.getElementById("dog-caption");
 const dogApiBtn = document.getElementById("dog-api-btn");
 const pheeBtn = document.getElementById("phee-btn");
-const PHEE_IMAGES = [
-  "images/phee.jpg",
-  "images/phee2.jpg",
-  "images/phee3.jpg",
-  "images/phee4.jpg",
-  "images/phee5.jpg",
-  "images/phee6.jpg",
-];
-
 // "hound-afghan" -> "Afghan hound", "pug" -> "Pug"
 function breedFromUrl(url) {
   const match = url.match(/\/breeds\/([^/]+)\//);
@@ -111,13 +104,19 @@ async function loadDog() {
 
 async function loadPhee() {
   pheeBtn.disabled = true;
-  const availableImages = PHEE_IMAGES.filter(
-    (image) => image !== dogImg.getAttribute("src"),
-  );
-  const image =
-    availableImages[Math.floor(Math.random() * availableImages.length)];
 
   try {
+    const allImages = await getPheeImages();
+    if (allImages.length === 0) throw new Error("No images in manifest");
+
+    // Avoid showing the same photo twice in a row (if there's a choice).
+    const current = dogImg.getAttribute("src");
+    const choices =
+      allImages.length > 1
+        ? allImages.filter((img) => img !== current)
+        : allImages;
+    const image = choices[Math.floor(Math.random() * choices.length)];
+
     await new Promise((resolve, reject) => {
       const loader = new Image();
       loader.onload = resolve;
@@ -186,14 +185,6 @@ async function loadFact(random = false) {
 
 factBtn.addEventListener("click", () => loadFact(true));
 loadFact(); // today's fact on every page load
-
-// ---------- Click counter ----------
-let count = 0;
-const countOut = document.getElementById("count-out");
-document.getElementById("count-btn").addEventListener("click", () => {
-  count += 1;
-  countOut.textContent = count;
-});
 
 // ---------- Mobile menu ----------
 const navToggle = document.getElementById("nav-toggle");
