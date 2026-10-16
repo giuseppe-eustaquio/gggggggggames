@@ -49,7 +49,7 @@ export async function mount(container) {
     <div class="tt-layout">
       <div class="tt-play-area">
         <canvas class="tt-board" width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}"
-          role="img" tabindex="0" aria-label="Turbo Tetris 10 by 20 playfield"></canvas>
+          role="img" tabindex="0" aria-label="Turbo Tetris playfield"></canvas>
       </div>
       <aside class="tt-next" aria-label="Next tetromino">
         <h4>Next</h4>
@@ -116,7 +116,6 @@ export async function mount(container) {
     const style = getComputedStyle(document.documentElement);
     const surface = style.getPropertyValue("--surface").trim() || "#fff";
     const line = style.getPropertyValue("--line").trim() || "#d5dde5";
-    const ink = style.getPropertyValue("--ink").trim() || "#1c2733";
     const bg = style.getPropertyValue("--bg").trim() || "#f2f5f8";
 
     context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -143,11 +142,6 @@ export async function mount(container) {
         );
       }
     }
-
-    context.fillStyle = ink;
-    context.font = "600 13px system-ui, sans-serif";
-    context.textAlign = "center";
-    context.fillText("10 × 20", CANVAS_WIDTH / 2, 26);
   }
 
   function drawNext() {
@@ -197,7 +191,7 @@ export async function mount(container) {
 
     board.setAttribute(
       "aria-label",
-      `Turbo Tetris 10 by 20 playfield. ${piece.name} tetromino, ${
+      `Turbo Tetris playfield. ${piece.name} tetromino, ${
         shapeWidth(pieceCells)
       } columns by ${shapeHeight(pieceCells)} rows, ${
         landed
@@ -221,6 +215,27 @@ export async function mount(container) {
       0,
       Math.floor((pageHeight - pageTop - pieceHeight) / (STEP * scale)),
     );
+  }
+
+  function clampPieceColumn(column) {
+    if (pieceRow < BOARD_ROWS) {
+      return Math.max(
+        0,
+        Math.min(BOARD_COLUMNS - shapeWidth(pieceCells), column),
+      );
+    }
+
+    const originX = boardLeft + BOARD_X * scale;
+    const step = STEP * scale;
+    const pieceWidth = (shapeWidth(pieceCells) - 1) * step + CELL * scale;
+    const pageWidth = Math.max(
+      document.documentElement.clientWidth,
+      document.documentElement.scrollWidth,
+      document.body.scrollWidth,
+    );
+    const minColumn = Math.ceil(-originX / step);
+    const maxColumn = Math.floor((pageWidth - pieceWidth - originX) / step);
+    return Math.max(minColumn, Math.min(maxColumn, column));
   }
 
   function finish() {
@@ -259,22 +274,17 @@ export async function mount(container) {
 
   function move(amount) {
     if (landed) return;
-    pieceColumn = Math.max(
-      0,
-      Math.min(BOARD_COLUMNS - shapeWidth(pieceCells), pieceColumn + amount),
-    );
+    pieceColumn = clampPieceColumn(pieceColumn + amount);
     drawPiece();
   }
 
   function rotate() {
     if (landed) return;
     pieceCells = rotateCells(pieceCells);
-    pieceColumn = Math.min(
-      pieceColumn,
-      BOARD_COLUMNS - shapeWidth(pieceCells),
-    );
+    pieceColumn = clampPieceColumn(pieceColumn);
     measurePage();
     pieceRow = Math.min(pieceRow, maxRow);
+    pieceColumn = clampPieceColumn(pieceColumn);
     drawPiece();
     if (pieceRow >= maxRow) finish();
   }
@@ -305,6 +315,7 @@ export async function mount(container) {
   const onScroll = () => drawPiece();
   const onResize = () => {
     measurePage();
+    pieceColumn = clampPieceColumn(pieceColumn);
     resizeOverlay();
   };
 

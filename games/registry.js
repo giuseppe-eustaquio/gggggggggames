@@ -12,14 +12,21 @@ export const games = [
     id: "matching-pairs",
     title: "Matching Pairs",
     blurb:
-      "Flip two cards at a time and match the pairs. Twelve photos of Phee, and a good memory required.",
+      "Flip the cards, find every matching pair, and see how sharp your memory really is.",
     load: () => import("./matching-pairs/game.js"),
   },
   {
     id: "turbo-tetris",
     title: "Turbo Tetris",
     blurb:
-      "A 10×20 board with standard tetrominoes that fall all the way through the page.",
+      "Rotate falling blocks, line them up, and keep the game going for a high score.",
     load: () => import("./turbo-tetris/game.js"),
+  },
+  {
+    id: "one-player-chess",
+    title: "One-Player Chess",
+    blurb:
+      "Choose your side, set a time control, and put your chess skills to the test.",
+    load: () => import("./one-player-chess/game.js"),
   },
 ];
