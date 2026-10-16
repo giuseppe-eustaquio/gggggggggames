@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Internet Stuff | Phee Playground</title>
+    <meta name="description" content="Little things from across the internet, powered by free APIs." />
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+        var a = localStorage.getItem("accent");
+        if (a) document.documentElement.setAttribute("data-accent", a);
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <button class="cornify-button" id="cornify-btn" type="button">
+      Cornify this page <span aria-hidden="true">✨</span>
+    </button>
+    <p class="cornify-status" id="cornify-status" role="status" aria-live="polite"></p>
+    <header class="site-header">
+      <a class="brand" href="index.html">Phee Playground</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="internet-stuff.html" aria-current="page">Internet Stuff</a>
+        <a href="playground.html">Playground</a>
+        <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
+        <div class="accent-picker">
+          <p class="accent-label" id="accent-label">Accent color</p>
+          <div class="swatches" role="group" aria-labelledby="accent-label">
+            <button class="swatch" data-accent="blue" aria-label="Blue" aria-pressed="true"></button>
+            <button class="swatch" data-accent="coral" aria-label="Coral" aria-pressed="false"></button>
+            <button class="swatch" data-accent="green" aria-label="Green" aria-pressed="false"></button>
+            <button class="swatch" data-accent="violet" aria-label="Violet" aria-pressed="false"></button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <figure class="dog">
+          <div class="dog-frame">
+            <img id="dog-img" alt="Phee" width="1200" height="600" hidden />
+            <p class="dog-fallback" id="dog-fallback">Loading a Phee photo…</p>
+          </div>
+          <figcaption class="dog-bar">
+            <span id="dog-caption" role="status">Phee</span>
+            <div class="dog-actions">
+              <button class="button" id="dog-api-btn" type="button">Random dog</button>
+              <button class="button" id="phee-btn" type="button">Random Phee</button>
+            </div>
+          </figcaption>
+          <p class="dog-source">Random dog photos from the <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.</p>
+        </figure>
+        <p class="fact-kicker">Curiosities &amp; surprises</p>
+        <h1>Internet Stuff</h1>
+        <p class="lede">Little things from across the internet, powered by free APIs.</p>
+      </section>
+
+      <section class="section facts" id="facts" aria-labelledby="facts-title">
+        <div class="fact-heading">
+          <div>
+            <p class="fact-kicker">A small diversion</p>
+            <h2 id="facts-title">Today's useless fact</h2>
+          </div>
+          <button class="button" id="fact-btn" type="button">Random fact</button>
+        </div>
+        <p class="fact-text" id="fact-text" role="status" aria-live="polite">Fetching today's fact...</p>
+        <p class="fact-source" id="fact-source" hidden></p>
+      </section>
+
+      <section class="section facts" id="advice" aria-labelledby="advice-title">
+        <div class="fact-heading">
+          <div>
+            <p class="fact-kicker">A little perspective</p>
+            <h2 id="advice-title">A piece of advice</h2>
+          </div>
+          <button class="button" id="advice-btn" type="button">Random advice</button>
+        </div>
+        <p class="fact-text" id="advice-text" role="status" aria-live="polite">Fetching some advice...</p>
+        <form class="advice-search" id="advice-search">
+          <label for="advice-query">Search advice (one word)</label>
+          <div class="search-controls">
+            <input id="advice-query" name="query" type="search" required maxlength="80" autocomplete="off" />
+            <button class="button" id="advice-search-btn" type="submit">Search</button>
+          </div>
+          <p class="form-status" id="advice-search-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section facts" id="jokes" aria-labelledby="jokes-title">
+        <div class="fact-heading">
+          <div>
+            <p class="fact-kicker">For a quick giggle</p>
+            <h2 id="jokes-title">Random joke</h2>
+          </div>
+          <button class="button" id="joke-btn" type="button">Another joke</button>
+        </div>
+        <div class="fact-text" id="joke-text" role="status" aria-live="polite">Fetching a joke...</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year">2026</span> Phee Playground</p>
+    </footer>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/internet-stuff.js"></script>
+  </body>
+</html>

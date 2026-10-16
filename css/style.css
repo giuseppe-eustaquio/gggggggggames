@@ -257,6 +257,42 @@ main,
   border-top: 1px solid var(--line);
 }
 
+/* ---------- Home page ---------- */
+.home-hero {
+  padding-top: clamp(2rem, 7vw, 4rem);
+}
+.home-photo {
+  margin: 0 0 2.5rem;
+}
+.home-photo .dog-frame {
+  aspect-ratio: 16 / 8;
+}
+.home-destinations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+.destination-card {
+  display: block;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.destination-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.destination-card h2 {
+  margin-bottom: 0.5rem;
+}
+.destination-card > p:not(.fact-kicker) {
+  color: var(--muted);
+}
+
 /* ---------- Useless fact ---------- */
 .facts {
   border-top: 0;
@@ -542,6 +578,32 @@ main,
   padding: 0.65rem 0.8rem;
   width: 100%;
 }
+.advice-search {
+  max-width: 30rem;
+  margin-top: 1.5rem;
+}
+.advice-search label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.search-controls {
+  display: flex;
+  gap: 0.6rem;
+}
+.search-controls input {
+  min-width: 0;
+  flex: 1;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.8rem;
+}
+.search-controls .button {
+  padding-inline: 1rem;
+}
 .form .button {
   justify-self: start;
   margin-top: 1rem;
@@ -591,7 +653,8 @@ main,
     scroll-behavior: auto;
   }
   .button,
-  .game-card {
+  .game-card,
+  .destination-card {
     transition: none;
   }
 }

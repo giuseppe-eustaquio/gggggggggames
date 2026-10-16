@@ -1,6 +1,7 @@
 # Phee Playground
 
-A plain HTML/CSS/JS site with a Playground of games.
+A plain HTML/CSS/JS site with three separate pages: a welcome page,
+Internet Stuff, and a Playground of games.
 
 ## Run it locally
 
@@ -27,9 +28,12 @@ them to the commit, so the deployed site always matches `images/phee/`.
 ## Project layout
 
 ```
-index.html              the page
+index.html              welcome page
+internet-stuff.html     API-powered curiosities
+playground.html         games and activities
 css/style.css           site styles
-js/main.js              header photo, theme, accent colour, menu, ...
+js/main.js              shared theme, accent colour, navigation, Cornify, ...
+js/internet-stuff.js    Dog CEO/Phee photos and API-powered diversions
 js/phee.js              shared helper for the Phee photos
 games/registry.js       the list of games (add new games here)
 games/playground.js     the Playground: game list + opens a game
@@ -52,9 +56,11 @@ needs Phaser can load it from its own `mount()` without affecting the rest.
 
 Each game has its own link: `#playground/<id>`.
 
-The home page hosts the Dog CEO/Phee photo picker and the daily/random
-useless-fact service. The fixed Cornify button loads Cornify on demand when
-clicked. Turbo Tetris is a plain JavaScript and CSS game; it draws its 10×20
+The home page shows a random Phee photo and links to the two main sections.
+Internet Stuff hosts the Dog CEO/Phee photo picker, useless facts, Advice Slip
+search and random advice, and filtered JokeAPI jokes. The fixed Cornify button
+loads Cornify on demand when clicked on any page. Turbo Tetris is a plain
+JavaScript and CSS game; it draws its 10×20
 board and standard tetrominoes directly. Its falling piece continues over the
 visible page to the document bottom, so it does not need an external game
 library or image assets.

@@ -6,10 +6,8 @@
     <title>Phee Playground</title>
     <meta
       name="description"
-      content="A starter site built with plain HTML, CSS, and JavaScript."
+      content="A little home for internet curiosities, games, tutorials, and activities."
     />
-
-    <!-- Set the saved theme before the page paints, so there's no flash -->
     <script>
       try {
         var t = localStorage.getItem("theme");
@@ -18,7 +16,6 @@
         if (a) document.documentElement.setAttribute("data-accent", a);
       } catch (e) {}
     </script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,113 +32,59 @@
     <p class="cornify-status" id="cornify-status" role="status" aria-live="polite"></p>
 
     <header class="site-header">
-      <a class="brand" href="#top">Phee Playground</a>
-
-      <button
-        class="nav-toggle"
-        id="nav-toggle"
-        aria-expanded="false"
-        aria-controls="site-nav"
-      >
+      <a class="brand" href="index.html">Phee Playground</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         Menu
       </button>
-
       <nav class="site-nav" id="site-nav" aria-label="Main">
-        <a href="#playground">Playground</a>
-        <button class="theme-toggle" id="theme-toggle" type="button">
-          Dark mode
-        </button>
+        <a href="internet-stuff.html">Internet Stuff</a>
+        <a href="playground.html">Playground</a>
+        <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
         <div class="accent-picker">
           <p class="accent-label" id="accent-label">Accent color</p>
           <div class="swatches" role="group" aria-labelledby="accent-label">
-            <button
-              class="swatch"
-              data-accent="blue"
-              aria-label="Blue"
-              aria-pressed="true"
-            ></button>
-            <button
-              class="swatch"
-              data-accent="coral"
-              aria-label="Coral"
-              aria-pressed="false"
-            ></button>
-            <button
-              class="swatch"
-              data-accent="green"
-              aria-label="Green"
-              aria-pressed="false"
-            ></button>
-            <button
-              class="swatch"
-              data-accent="violet"
-              aria-label="Violet"
-              aria-pressed="false"
-            ></button>
+            <button class="swatch" data-accent="blue" aria-label="Blue" aria-pressed="true"></button>
+            <button class="swatch" data-accent="coral" aria-label="Coral" aria-pressed="false"></button>
+            <button class="swatch" data-accent="green" aria-label="Green" aria-pressed="false"></button>
+            <button class="swatch" data-accent="violet" aria-label="Violet" aria-pressed="false"></button>
           </div>
         </div>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero" id="top">
-        <figure class="dog">
+      <section class="hero home-hero" id="top">
+        <figure class="home-photo">
           <div class="dog-frame">
-            <img id="dog-img" alt="Phee" width="1200" height="600" hidden />
-            <p class="dog-fallback" id="dog-fallback">Loading a Phee photo…</p>
+            <img id="home-phee-img" alt="Phee" width="1200" height="600" hidden />
+            <p class="dog-fallback" id="home-phee-fallback">Loading a Phee photo…</p>
           </div>
-          <figcaption class="dog-bar">
-            <span id="dog-caption" role="status">Phee</span>
-            <div class="dog-actions">
-              <button class="button" id="dog-api-btn" type="button">
-                Random dog
-              </button>
-              <button class="button" id="phee-btn" type="button">
-                Random Phee
-              </button>
-            </div>
-          </figcaption>
-          <p class="dog-source">
-            Random dog photos from the
-            <a href="https://dog.ceo/dog-api/">Dog CEO API</a>.
-          </p>
+          <figcaption class="dog-source">A little hello from Phee.</figcaption>
         </figure>
+        <p class="fact-kicker">Welcome to</p>
+        <h1>Phee Playground</h1>
+        <p class="lede">A little corner for curious clicks, happy distractions, and games to get lost in.</p>
       </section>
 
-      <section class="section facts" id="facts" aria-labelledby="facts-title">
-        <div class="fact-heading">
-          <div>
-            <p class="fact-kicker">A small diversion</p>
-            <h2 id="facts-title">Today's useless fact</h2>
-          </div>
-          <button class="button" id="fact-btn" type="button">
-            Random fact
-          </button>
-        </div>
-        <p class="fact-text" id="fact-text" role="status" aria-live="polite">
-          Fetching today's fact...
-        </p>
-        <p class="fact-source" id="fact-source" hidden></p>
+      <section class="section home-destinations" aria-label="Explore Phee Playground">
+        <a class="destination-card" href="internet-stuff.html">
+          <p class="fact-kicker">Curiosities &amp; surprises</p>
+          <h2>Internet Stuff</h2>
+          <p>Little things from across the internet, powered by free APIs.</p>
+          <span class="game-card-cta">Take a look →</span>
+        </a>
+        <a class="destination-card" href="playground.html">
+          <p class="fact-kicker">Play, learn, explore</p>
+          <h2>Playground</h2>
+          <p>A collection of games, tutorials, and activities you love, with twists and turns.</p>
+          <span class="game-card-cta">Let’s play →</span>
+        </a>
       </section>
-
-      <section
-        class="section"
-        id="playground"
-        aria-labelledby="playground-title"
-      >
-        <h2 id="playground-title">Playground</h2>
-        <div id="playground-app">
-          <noscript><p>The games need JavaScript turned on.</p></noscript>
-        </div>
-      </section>
-
     </main>
 
     <footer class="site-footer">
       <p>&copy; <span id="year">2026</span> Phee Playground</p>
     </footer>
-
     <script type="module" src="js/main.js"></script>
-    <script type="module" src="games/playground.js"></script>
   </body>
 </html>
